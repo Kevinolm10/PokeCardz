@@ -4,10 +4,9 @@ from pokeApi import fetchPokeData
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    data = fetchPokeData()
-    print(data)
+@app.route("/<int:pokemon_id>")
+def get_pokemon(pokemon_id):
+    data = fetchPokeData(pokemon_id)
     return jsonify(data)
 
 if __name__ == "__main__":
