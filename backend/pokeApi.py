@@ -1,11 +1,11 @@
 import requests
 
-def fetchPokeData():
+def fetchPokeData(pokemon_id):
     try:
-        response = requests.get("https://pokeapi.co/api/v2/pokemon")
-        response.raise_for_status()  # throws an error for 4xx/5xx
+        response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}")
+        response.raise_for_status()
         data = response.json()
-        print(data)
-        return response.json()
+        return data
     except Exception as error:
-        print("Error:", error)
+        return {"error": str(error)}
+
